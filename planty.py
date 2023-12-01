@@ -20,15 +20,24 @@
 from AdaFruitWrapper import AdaFeed 
 import AdaSensorWrapper as AdaSensor
 import time
+from datetime import datetime
 
-
+print('****** Start Planty *******')
+print(' Add Temperature Feed')
 ada_temp = AdaFeed('Temperature')
+
+print(' Add Humidity Feed')
 ada_humid = AdaFeed('Humidity')
 
 while 1:
-    
-    ada_temp.send_data(AdaSensor.get_temperature())
-    ada_humid.send_data(AdaSensor.get_humidity())
+    humid = AdaSensor.get_humidity()
+    temp = AdaSensor.get_temperature()
+    ada_temp.send_data(temp)
+    ada_humid.send_data(humid)
+
+    now = datetime.now()
+    current_time = now.strftime("%H:%M:%S")
+    print(f'{current_time}  Temperature : {temp:.1f}°C   Humidity : {humid:.1f}%')
     time.sleep(60 * 1)
 
     
