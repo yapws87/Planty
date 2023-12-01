@@ -35,6 +35,6 @@ while 1:
     now = datetime.now()
     current_time = now.strftime("%H:%M:%S")
     print(f'{current_time}  Temperature : {temp:.1f}°C   Humidity : {humid:.1f}%')
-    time.sleep(60 * 1)
+    time.sleep(60 * 60) # 1 hour
 
     
