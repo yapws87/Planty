@@ -24,10 +24,10 @@ from datetime import datetime
 
 print('****** Start Planty *******')
 print(' Adding Temperature Feed')
-ada_temp = AdaFeed('Temperature')
+ada_temp = AdaFeed('temperature')
 
 print(' Adding Humidity Feed')
-ada_humid = AdaFeed('Humidity')
+ada_humid = AdaFeed('humidity')
 
 while 1:
     humid = AdaSensor.get_humidity()
