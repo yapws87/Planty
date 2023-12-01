@@ -14,7 +14,7 @@ class AdaFeed:
             print(f"AdaFeet __init__ {feed_name}")
             self.feed = aio.feeds(feed_name)
         except RequestError as e:  # If feed doesn't exist, create it
-            if e.response.status_code == 404: # Feed not found
+            if e.status_code == 404: # Feed not found
                 print(f"AdaFeet __init__ CREATE {feed_name}")
                 self.feed = aio.create_feed(Feed(name=feed_name))
             else:
