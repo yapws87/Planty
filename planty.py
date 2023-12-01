@@ -24,7 +24,7 @@ from datetime import datetime
 
 print('****** Start Planty *******')
 print(' Adding Temperature Feed')
-ada_temp = AdaFeed('temperature')
+ada_temp = AdaFeed('temperature') # only lower case
 
 print(' Adding Humidity Feed')
 ada_humid = AdaFeed('humidity')
