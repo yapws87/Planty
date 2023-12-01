@@ -23,10 +23,10 @@ import time
 from datetime import datetime
 
 print('****** Start Planty *******')
-print(' Add Temperature Feed')
+print(' Adding Temperature Feed')
 ada_temp = AdaFeed('Temperature')
 
-print(' Add Humidity Feed')
+print(' Adding Humidity Feed')
 ada_humid = AdaFeed('Humidity')
 
 while 1:

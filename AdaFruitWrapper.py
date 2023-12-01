@@ -11,8 +11,10 @@ class AdaFeed():
 
     def __init__(self, feed_name):
         try:
+            print(f"AdaFeet __init__ {feed_name}")
             self.feed = aio.feeds(feed_name)
         except RequestError:  # If feed doesn't exist, create it
+            print(f"AdaFeet __init__ CREATE {feed_name}")
             self.feed = aio.create_feed(Feed(name=feed_name))
     
     def send_data(self,data):
