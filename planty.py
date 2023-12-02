@@ -38,5 +38,5 @@ while 1:
     
     now = datetime.now()
     current_time = now.strftime("%H:%M:%S")
-    print(f'{current_time}  Temperature : {temp:.1f}°C   Humidity : {humid:.1f}%  Soil : {}')
+    print(f'{current_time}  Temperature : {temp:.1f}°C   Humidity : {humid:.1f}%  Soil : {soil}')
     time.sleep(60 * 1) # 1 hour
