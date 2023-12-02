@@ -6,8 +6,8 @@ GPIO.setmode(GPIO.BCM)
 
 # Motor GPIO Pins
 #motor_enable_pin = 18  # Change to your GPIO pin
-motor_input1 = 2     
-motor_input2 = 3     
+motor_input1 = 14     
+motor_input2 = 15    
 
 # Set up the motor pins
 #GPIO.setup(motor_enable_pin, GPIO.OUT)
