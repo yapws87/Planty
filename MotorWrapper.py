@@ -3,7 +3,7 @@ import time
 
 # Set the GPIO mode
 GPIO.setmode(GPIO.BCM)
-GPIO.cleanup()
+#GPIO.cleanup()
 # Motor GPIO Pins
 #motor_enable_pin = 18  # Change to your GPIO pin
 motor_input1 = 2
@@ -32,10 +32,6 @@ def motor_stop():
     GPIO.output(motor_input1, GPIO.LOW)
     GPIO.output(motor_input2, GPIO.LOW)
 
-# def motor_stop2():
-#     GPIO.output(motor_input2, GPIO.LOW)
-#     GPIO.output(motor_input2, GPIO.LOW)
-    #pwm.ChangeDutyCycle(0)
 
 def motor_clear():
     GPIO.cleanup()
