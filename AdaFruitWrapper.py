@@ -4,6 +4,9 @@ import os
 
 ada_id = os.getenv('ADAFRUIT_IO_ID')
 ada_pw = os.getenv('ADAFRUIT_IO_PW')
+
+print(f"Ada_id : {ada_id}")
+print(f"Ada_pw : {ada_pw}")
 aio = Client(ada_id, ada_pw)
 
 
