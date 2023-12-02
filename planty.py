@@ -26,16 +26,17 @@ from datetime import datetime
 print('****** Start Planty *******')
 ada_temp = AdaFeed('temperature') # only lower case
 ada_humid = AdaFeed('humidity')
+ada_soil = AdaFeed('soil')
 
 while 1:
     humid = AdaSensor.get_humidity()
     temp = AdaSensor.get_temperature()
+    soil = AdaSensor.get_soil()
     ada_temp.send_data(temp)
     ada_humid.send_data(humid)
+    ada_soil.send_data(soil)
 
     now = datetime.now()
     current_time = now.strftime("%H:%M:%S")
-    print(f'{current_time}  Temperature : {temp:.1f}°C   Humidity : {humid:.1f}%')
-    time.sleep(60 * 60) # 1 hour
-
-    
+    print(f'{current_time}  Temperature : {temp:.1f}°C   Humidity : {humid:.1f}%  Soil : {soil}')
+    time.sleep(60 * 1) # 1 hour
