@@ -20,6 +20,7 @@
 from AdaFruitWrapper import AdaFeed 
 from DropboxWrapper import Dropboxy
 import AdaSensorWrapper as AdaSensor
+import MotorWrapper as AdaMotor
 import time
 from datetime import datetime
 
@@ -35,6 +36,11 @@ while 1:
     ada_temp.send_data(temp)
     ada_humid.send_data(humid)
     ada_soil.send_data(soil)
+    
+
+    AdaMotor.motor_forward()
+    time.sleep(2)
+    AdaMotor.motor_stop()
     
     now = datetime.now()
     current_time = now.strftime("%H:%M:%S")

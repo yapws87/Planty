@@ -7,7 +7,7 @@ SENSOR = Adafruit_DHT.DHT11
 ADA_TEMP_PIN = 4
 ADA_SOIL_PIN = 24
 GPIO.setmode(GPIO.BCM)
-GPIO.cleanup()
+#GPIO.cleanup()
 
 
 
@@ -29,7 +29,7 @@ def get_soil():
     GPIO.setup(ADA_SOIL_PIN, GPIO.IN)
     water_flag = 0
         
-    if not GPIO.input(ADA_SOIL_PIN): # fa
+    if not GPIO.input(ADA_SOIL_PIN): # returns 0 when water is detected
         water_flag = 1
         #print("Water not detected!")
 
