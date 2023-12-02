@@ -35,8 +35,8 @@ while 1:
     ada_temp.send_data(temp)
     ada_humid.send_data(humid)
     ada_soil.send_data(soil)
-
+    
     now = datetime.now()
     current_time = now.strftime("%H:%M:%S")
-    print(f'{current_time}  Temperature : {temp:.1f}°C   Humidity : {humid:.1f}%  Soil : {soil}')
+    print(f'{current_time}  Temperature : {temp:.1f}°C   Humidity : {humid:.1f}%  Soil : {}')
     time.sleep(60 * 1) # 1 hour
