@@ -29,7 +29,7 @@ def get_soil():
     GPIO.setup(ADA_SOIL_PIN, GPIO.IN)
     water_flag = 0
         
-    if GPIO.input(ADA_SOIL_PIN): # fa
+    if not GPIO.input(ADA_SOIL_PIN): # fa
         water_flag = 1
         #print("Water not detected!")
 
