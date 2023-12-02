@@ -29,8 +29,12 @@ def motor_backward(speed=100):
   #  pwm.ChangeDutyCycle(speed)  # Change speed
 
 def motor_stop():
+    GPIO.output(motor_input1, GPIO.LOW)
     GPIO.output(motor_input2, GPIO.LOW)
-    GPIO.output(motor_input2, GPIO.LOW)
+
+# def motor_stop2():
+#     GPIO.output(motor_input2, GPIO.LOW)
+#     GPIO.output(motor_input2, GPIO.LOW)
     #pwm.ChangeDutyCycle(0)
 
 def motor_clear():
