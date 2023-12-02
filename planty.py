@@ -39,10 +39,13 @@ while 1:
     
     print("forward")
     AdaMotor.motor_forward()
-    time.sleep(10)
+    time.sleep(2)
     print("Stop")
     AdaMotor.motor_stop()
-
+    time.sleep(2)
+    print("backwards")
+    AdaMotor.motor_forward()
+    time.sleep(2)
     now = datetime.now()
     current_time = now.strftime("%H:%M:%S")
     print(f'{current_time}  Temperature : {temp:.1f}°C   Humidity : {humid:.1f}%  Soil : {soil}')
