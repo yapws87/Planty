@@ -37,11 +37,12 @@ while 1:
     ada_humid.send_data(humid)
     ada_soil.send_data(soil)
     
-
+    print("forward")
     AdaMotor.motor_forward()
-    time.sleep(2)
+    time.sleep(10)
+    print("Stop")
     AdaMotor.motor_stop()
-    
+
     now = datetime.now()
     current_time = now.strftime("%H:%M:%S")
     print(f'{current_time}  Temperature : {temp:.1f}°C   Humidity : {humid:.1f}%  Soil : {soil}')
