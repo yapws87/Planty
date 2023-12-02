@@ -3,7 +3,7 @@ import time
 
 # Set the GPIO mode
 GPIO.setmode(GPIO.BCM)
-
+GPIO.cleanup()
 # Motor GPIO Pins
 #motor_enable_pin = 18  # Change to your GPIO pin
 motor_input1 = 14     
