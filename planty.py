@@ -18,6 +18,7 @@
 
 
 from AdaFruitWrapper import AdaFeed 
+from AdaFruitWrapper import AdaTrigger 
 from DropboxWrapper import Dropboxy
 import AdaSensorWrapper as AdaSensor
 import MotorWrapper as AdaMotor
@@ -28,6 +29,7 @@ print('****** Start Planty *******')
 ada_temp = AdaFeed('temperature') # only lower case
 ada_humid = AdaFeed('humidity')
 ada_soil = AdaFeed('soil')
+adaWater = AdaTrigger('waterpump')
 
 while 1:
     humid = AdaSensor.get_humidity()
@@ -36,7 +38,9 @@ while 1:
     ada_temp.send_data(temp)
     ada_humid.send_data(humid)
     ada_soil.send_data(soil)
-    
+
+    adaWater.connect()
+
     # run motor when soil dry
     if soil == 0:
         print("forward")
