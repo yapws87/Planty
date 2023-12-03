@@ -29,9 +29,9 @@ class AdaFeed:
         return feeds
     
 class AdaTrigger:
-    def __init__(self):
+    def __init__(self,feed_name):
         self.client = MQTTClient(ada_id,ada_pw)
-
+        self.feed_name = feed_name
         self.client.on_connect = self.connected
         self.client.on_disconnect = self.disconnected
         self.client.on_message = self.message
@@ -42,7 +42,7 @@ class AdaTrigger:
 
     def connected(self,client):
         print('Connected to Adafruit IO! Listening for ON/OFF signals...')
-        self.client.subscribe('onoff')  # replace 'onoff' with your feed name
+        self.client.subscribe(self.feed_name)  # replace 'onoff' with your feed name
 
     def disconnected(self,client):
         print('Disconnected from Adafruit IO!')
