@@ -75,4 +75,4 @@ class AdaTrigger:
     #         # Implement your logic here when OFF signal is received
     #         print('OFF signal received')
 
-    m
+    
