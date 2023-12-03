@@ -51,7 +51,7 @@ class AdaTrigger:
 
     def on_connect(self):
         print("Connected with result code ")
-        client.subscribe(f"{ada_id}/feeds/{self.feed_name}")
+        self.client.subscribe(f"{ada_id}/feeds/{self.feed_name}")
 
     def on_message(self, msg):
         print(msg.topic+" "+str(msg.payload))
