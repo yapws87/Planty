@@ -33,8 +33,8 @@ class AdaTrigger:
     def __init__(self,feed_name):
         self.feed_name = feed_name
         self.client = mqtt.Client()
-        self.client.on_connect = self.on_connect()
-        self.client.on_message = self.on_message()
+        self.client.on_connect = self.on_connect
+        self.client.on_message = self.on_message
         
         self.client.username_pw_set(ada_id, ada_pw)
         self.client.connect("io.adafruit.com",1883,60)
@@ -49,11 +49,11 @@ class AdaTrigger:
         self.client.connect()
         #self.client.loop_start()
 
-    def on_connect(self):
+    def on_connect(self,client, userdata, flags, rc):
         print("Connected with result code ")
-        self.client.subscribe(f"{ada_id}/feeds/{self.feed_name}")
+        client.subscribe(f"{ada_id}/feeds/{self.feed_name}")
 
-    def on_message(self, msg):
+    def on_message(self,client, userdata, msg):
         print(msg.topic+" "+str(msg.payload))
         # Handle message (turn LED on or off)
 
