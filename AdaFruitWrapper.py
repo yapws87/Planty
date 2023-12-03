@@ -38,7 +38,7 @@ class AdaTrigger:
         
     def connect(self):
         self.client.connect()
-        self.client.loop_blocking()
+        self.client.loop_start()
 
     def connected(self,client):
         print('Connected to Adafruit IO! Listening for ON/OFF signals...')
