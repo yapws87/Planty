@@ -48,7 +48,7 @@ class AdaTrigger:
         print('Disconnected from Adafruit IO!')
         #sys.exit(1)
 
-    def message(client, feed_id, payload):
+    def message(self,client, feed_id, payload):
         print('Feed {0} received new value: {1}'.format(feed_id, payload))
         if payload == 'ON':
             # Implement your logic here when ON signal is received
