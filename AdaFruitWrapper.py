@@ -46,8 +46,8 @@ class AdaTrigger:
 
 
     def connect(self):
-        self.client.connect()
-        #self.client.loop_start()
+        #self.client.connect()
+        self.client.loop_start()
 
     def on_connect(self,client, userdata, flags, rc):
         print("Connected with result code ")
