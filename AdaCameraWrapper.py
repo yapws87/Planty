@@ -1,11 +1,11 @@
 import base64
-from picamera import PiCamera
+from picamera2 import PiCamera2
 from io import BytesIO
 import time
 
 
 # Set up camera
-cam = PiCamera()
+cam = PiCamera2()
 cam.resolution = (1920,1080)
 time.sleep(2)
 
