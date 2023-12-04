@@ -30,7 +30,7 @@ class AdaFeed:
         return feeds
     
 class AdaTrigger:
-    def __init__(self,feed_name):
+    def __init__(self,feed_name,action):
         self.feed_name = feed_name
         self.client = mqtt.Client()
         self.client.on_connect = self.on_connect
@@ -38,6 +38,8 @@ class AdaTrigger:
         
         self.client.username_pw_set(ada_id, ada_pw)
         self.client.connect("io.adafruit.com",1883,60)
+
+        self.action = action
         #self.client = MQTTClient(ada_id,ada_pw)
         # self.client.on_connect = self.connected
         # self.client.on_disconnect = self.disconnected
@@ -55,6 +57,7 @@ class AdaTrigger:
 
     def on_message(self,client, userdata, msg):
         print(msg.topic+" "+str(msg.payload))
+        self.action()
         # Handle message (turn LED on or off)
 
 

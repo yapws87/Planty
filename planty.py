@@ -22,14 +22,39 @@ from AdaFruitWrapper import AdaTrigger
 from DropboxWrapper import Dropboxy
 import AdaSensorWrapper as AdaSensor
 import MotorWrapper as AdaMotor
+import AdaCameraWrapper as AdaCam
 import time
 from datetime import datetime
 
 print('****** Start Planty *******')
+
+
 ada_temp = AdaFeed('temperature') # only lower case
 ada_humid = AdaFeed('humidity')
 ada_soil = AdaFeed('soil')
-adaWater = AdaTrigger('waterpump')
+ada_image = AdaFeed('plantpicture')
+
+def water_plant():
+    print("forward")
+    AdaMotor.motor_forward()
+    time.sleep(2)
+    print("Stop1")
+    AdaMotor.motor_stop()
+    time.sleep(2)
+    print("backwards")
+    AdaMotor.motor_forward()
+    time.sleep(2)
+    print("Stop2")
+    AdaMotor.motor_stop()
+    time.sleep(2)
+
+
+adaWaterTrigger = AdaTrigger('waterpump',water_plant)
+
+
+
+image_str = AdaCam.capture()
+ada_image.send_data(image_str)
 
 while 1:
     humid = AdaSensor.get_humidity()
@@ -39,22 +64,11 @@ while 1:
     ada_humid.send_data(humid)
     ada_soil.send_data(soil)
 
-    adaWater.connect()
+    adaWaterTrigger.connect()
 
     # run motor when soil dry
     if soil == 0:
-        print("forward")
-        AdaMotor.motor_forward()
-        time.sleep(2)
-        print("Stop1")
-        AdaMotor.motor_stop()
-        time.sleep(2)
-        print("backwards")
-        AdaMotor.motor_forward()
-        time.sleep(2)
-        print("Stop2")
-        AdaMotor.motor_stop()
-        time.sleep(2)
+        water_plant()
     
     now = datetime.now()
     current_time = now.strftime("%H:%M:%S")
