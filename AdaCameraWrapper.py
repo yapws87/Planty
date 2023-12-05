@@ -9,6 +9,8 @@ import subprocess
 #cam = PiCamera2()
 #cam.resolution = (1920,1080)
 #time.sleep(2)
+cam_width = 1920
+cam_height = 1080
 
 def capture(file_name):
     # Capture image to in-memory stream
@@ -17,8 +19,8 @@ def capture(file_name):
     #stream.seek(0)
     encoded_str = ""
     image_path = file_name#"capture.jpg"
-    subprocess.run(["libcamera-still","-o",image_path])
-    time.sleep(2)
+    subprocess.run(["libcamera-still","-o",image_path, "--width", str(cam_width), "--height", str(cam_height)])
+    #time.sleep(2)
     with open(image_path, "rb") as image_file:
         encoded_str = base64.b64encode(image_file.read()).decode('utf-8')
 
