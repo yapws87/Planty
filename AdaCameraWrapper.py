@@ -9,8 +9,8 @@ import subprocess
 #cam = PiCamera2()
 #cam.resolution = (1920,1080)
 #time.sleep(2)
-cam_width = 640
-cam_height = 480
+cam_width = 320
+cam_height = 240
 
 def capture(file_name):
     # Capture image to in-memory stream
