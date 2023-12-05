@@ -55,8 +55,8 @@ adaWaterTrigger = AdaTrigger('waterpump',water_plant)
 
 image_str = AdaCam.capture("image.jpg")
 ada_image.send_data(image_str)
-dropbox = Dropboxy()
-dropbox.upload_file("image.jpg","/Planty/image.jpg")
+# dropbox = Dropboxy()
+# dropbox.upload_file("image.jpg","/Planty/image.jpg")
 
 
 while 1:
