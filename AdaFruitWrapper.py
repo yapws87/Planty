@@ -92,7 +92,7 @@ class AdaToggle:
 
     def on_message(self,client, userdata, msg):
         print(msg.topic+" "+str(msg.payload))
-        if msg.payload == int(0):
+        if msg.payload == b'0':
             self.action_off()
             print(f"OFF {msg.payload}" )
         else:
