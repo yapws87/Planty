@@ -30,17 +30,19 @@ def yellow_LED(duty_c):
     while not stop_yellow.is_set():
         seconds = 0.5 
         GPIO.output(LED_YELLOW, GPIO.HIGH)
-        time.sleep( duty_c * seconds)
-        GPIO.output(LED_YELLOW, GPIO.LOW)
-        time.sleep((1- duty_c) * seconds)
+    GPIO.output(LED_YELLOW, GPIO.LOW)
+        # time.sleep( duty_c * seconds)
+        # GPIO.output(LED_YELLOW, GPIO.LOW)
+        # time.sleep((1- duty_c) * seconds)
  
 def white_LED(duty_c):
     while not stop_white.is_set():
         seconds = 0.5
         GPIO.output(LED_WHITE, GPIO.HIGH)
-        time.sleep(duty_c * seconds)
-        GPIO.output(LED_WHITE, GPIO.LOW)
-        time.sleep((1 - duty_c) * seconds)
+    GPIO.output(LED_WHITE, GPIO.LOW)
+        # time.sleep(duty_c * seconds)
+        # GPIO.output(LED_WHITE, GPIO.LOW)
+        # time.sleep((1 - duty_c) * seconds)
  
 # Create and start the thread
 #blink_time = 0.01
