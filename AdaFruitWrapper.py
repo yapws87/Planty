@@ -94,8 +94,10 @@ class AdaToggle:
         print(msg.topic+" "+str(msg.payload))
         if msg.payload == int(0):
             self.action_off()
+            print(f"OFF {msg.payload}" )
         else:
             self.action_on()
+            print(f"ON {msg.payload}" )
         # Handle message (turn LED on or off)
 
 
