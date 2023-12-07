@@ -61,6 +61,43 @@ class AdaTrigger:
         # Handle message (turn LED on or off)
 
 
+
+
+    class AdaToggle:
+        def __init__(self,feed_name,action_on,action_off):
+            self.feed_name = feed_name
+            self.client = mqtt.Client()
+            self.client.on_connect = self.on_connect
+            self.client.on_message = self.on_message
+            
+            self.client.username_pw_set(ada_id, ada_pw)
+            self.client.connect("io.adafruit.com",1883,60)
+
+            self.action_on = action_on
+            self.action_off = action_off
+            #self.client = MQTTClient(ada_id,ada_pw)
+            # self.client.on_connect = self.connected
+            # self.client.on_disconnect = self.disconnected
+            # self.client.on_message = self.message
+            
+
+
+        def connect(self):
+            #self.client.connect()
+            self.client.loop_start()
+
+        def on_connect(self,client, userdata, flags, rc):
+            print("Connected with result code ")
+            client.subscribe(f"{ada_id}/feeds/{self.feed_name}")
+
+        def on_message(self,client, userdata, msg):
+            print(msg.topic+" "+str(msg.payload))
+            if msg.payload == 0:
+                self.action_off()
+            else:
+                self.action_on()
+            # Handle message (turn LED on or off)
+
     # def connected(self,client):
     #     print('Connected to Adafruit IO! Listening for ON/OFF signals...')
     #     self.client.subscribe(self.feed_name)  # replace 'onoff' with your feed name

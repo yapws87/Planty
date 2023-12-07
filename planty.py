@@ -18,10 +18,11 @@
 
 
 from AdaFruitWrapper import AdaFeed 
-from AdaFruitWrapper import AdaTrigger 
+from AdaFruitWrapper import AdaTrigger, AdaToggle 
 from DropboxWrapper import Dropboxy
 import AdaSensorWrapper as AdaSensor
 import MotorWrapper as AdaMotor
+import LEDWrapper as AdaLED
 import AdaCameraWrapper as AdaCam
 import time
 from datetime import datetime
@@ -49,7 +50,16 @@ def water_plant():
     time.sleep(2)
 
 
+def sunlight_on():
+    AdaLED.on_white_light()
+    AdaLED.on_yellow_light()
+
+def sunlight_off():
+    AdaLED.off_white_LED()
+    AdaLED.off_yellow_LED()
+
 adaWaterTrigger = AdaTrigger('waterpump',water_plant)
+adaSunlightTrigger = AdaToggle('sunlight',sunlight_on)
 
 
 image_path = "/home/pi/github/Planty/image.jpg"
@@ -68,6 +78,7 @@ while 1:
     ada_soil.send_data(soil)
 
     adaWaterTrigger.connect()
+    adaSunlightTrigger.connect()
 
     # run motor when soil dry
     if soil == 0:
