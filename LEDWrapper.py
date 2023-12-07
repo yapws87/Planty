@@ -48,11 +48,11 @@ led_yellow_thread = threading.Thread(target=yellow_LED, args=(blink_time,))
 def on_white_light():
         stop_white.clear()
         #led_white_thread = threading.Thread(target=white_LED, args=(True,))
-        led_white_thread.join()
+        led_white_thread.start()
 
 def off_white_light():
         stop_white.set()
-        led_white_thread.join()
+        led_white_thread.start()
 
 def on_yellow_light():
         stop_yellow.clear()
