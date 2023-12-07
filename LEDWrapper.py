@@ -41,7 +41,7 @@ def white_LED(seconds):
         time.sleep(seconds)
  
 # Create and start the thread
-blink_time = 0.01
+#blink_time = 0.01
 
 
 # led_white_thread.start()
@@ -49,7 +49,7 @@ blink_time = 0.01
 
 led_white_thread = None
 led_yellow_thread = None
-def on_white_light():
+def on_white_light(blink_time):
     stop_white.clear()
     led_white_thread = threading.Thread(target=white_LED, args=(blink_time,))
     led_white_thread.start()
@@ -59,7 +59,7 @@ def off_white_light():
     if led_white_thread is not None:
         led_white_thread.join()
 
-def on_yellow_light():
+def on_yellow_light(blink_time):
     stop_yellow.clear()
     led_yellow_thread = threading.Thread(target=yellow_LED, args=(blink_time,))
     led_yellow_thread.start()

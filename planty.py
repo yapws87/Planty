@@ -51,8 +51,8 @@ def water_plant():
 
 
 def sunlight_on():
-    AdaLED.on_white_light()
-    AdaLED.on_yellow_light()
+    AdaLED.on_white_light(0.001)
+    AdaLED.on_yellow_light(0.001)
 
 def sunlight_off():
     AdaLED.off_white_light()
