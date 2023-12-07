@@ -52,9 +52,9 @@ def water_plant():
 adaWaterTrigger = AdaTrigger('waterpump',water_plant)
 
 
-
-#image_str = AdaCam.capture("image.jpg")
-#ada_image.send_data(image_str)
+image_path = "/home/pi/github/Planty/image.jpg"
+image_str = AdaCam.capture(image_path)
+ada_image.send_data(image_path)
 # dropbox = Dropboxy()
 # dropbox.upload_file("image.jpg","/Planty/image.jpg")
 
