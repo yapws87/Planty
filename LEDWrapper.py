@@ -28,13 +28,13 @@ stop_white = threading.Event()
 
 def yellow_LED(seconds):
     while not stop_yellow.is_set():
-        GPIO.output(LED_YELLOW, GPIO.HIGH)
-        time.sleep(seconds)
-        GPIO.output(LED_YELLOW, GPIO.LOW)
-        time.sleep(seconds)
+            GPIO.output(LED_YELLOW, GPIO.HIGH)
+            time.sleep(seconds)
+            GPIO.output(LED_YELLOW, GPIO.LOW)
+            time.sleep(seconds)
  
 def white_LED(seconds):
-    while not stop_yellow.is_set():
+    while not stop_white.is_set():
         GPIO.output(LED_WHITE, GPIO.HIGH)
         time.sleep(seconds)
         GPIO.output(LED_WHITE, GPIO.LOW)
