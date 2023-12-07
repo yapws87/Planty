@@ -23,8 +23,8 @@ GPIO.setup(LED_WHITE , GPIO.OUT)
 stop_yellow = threading.Event()
 stop_white = threading.Event()
 
-stop_yellow.set()
-stop_white.set()
+# stop_yellow.set()
+# stop_white.set()
 
 def yellow_LED(seconds):
     while not stop_yellow.is_set():
@@ -44,6 +44,9 @@ def white_LED(seconds):
 blink_time = 0.1
 led_white_thread = threading.Thread(target=white_LED, args=(blink_time,))
 led_yellow_thread = threading.Thread(target=yellow_LED, args=(blink_time,))
+# led_white_thread.start()
+# led_yellow_thread.start()
+
 
 def on_white_light():
         stop_white.clear()
@@ -52,11 +55,11 @@ def on_white_light():
 
 def off_white_light():
         stop_white.set()
-        led_white_thread.start()
+        led_white_thread.join()
 
 def on_yellow_light():
         stop_yellow.clear()
-        led_yellow_thread.join()
+        led_yellow_thread.start()
         #led_yellow_thread = threading.Thread(target=yellow_LED, args=(True,))
 
 def off_yellow_light():
