@@ -26,23 +26,20 @@ stop_white = threading.Event()
 # stop_yellow.set()
 # stop_white.set()
 
-def yellow_LED(duty_c):
+def yellow_LED(seconds):
     while not stop_yellow.is_set():
-        seconds = 0.5 
+        #seconds = 0.5 
         GPIO.output(LED_YELLOW, GPIO.HIGH)
-    GPIO.output(LED_YELLOW, GPIO.LOW)
-        # time.sleep( duty_c * seconds)
-        # GPIO.output(LED_YELLOW, GPIO.LOW)
-        # time.sleep((1- duty_c) * seconds)
+        time.sleep(  seconds)
+        GPIO.output(LED_YELLOW, GPIO.LOW)
+        time.sleep( seconds)
  
-def white_LED(duty_c):
+def white_LED(seconds):
     while not stop_white.is_set():
-        seconds = 0.5
         GPIO.output(LED_WHITE, GPIO.HIGH)
-    GPIO.output(LED_WHITE, GPIO.LOW)
-        # time.sleep(duty_c * seconds)
-        # GPIO.output(LED_WHITE, GPIO.LOW)
-        # time.sleep((1 - duty_c) * seconds)
+        time.sleep( seconds)
+        GPIO.output(LED_WHITE, GPIO.LOW)
+        time.sleep( seconds)
  
 # Create and start the thread
 #blink_time = 0.01
@@ -54,29 +51,29 @@ def white_LED(duty_c):
 led_white_thread = None
 led_yellow_thread = None
 def on_white_light(blink_time):
-    GPIO.output(LED_WHITE, GPIO.HIGH)
-    # stop_white.clear()
-    # led_white_thread = threading.Thread(target=white_LED, args=(blink_time,))
-    # led_white_thread.start()
+    # GPIO.output(LED_WHITE, GPIO.HIGH)
+    stop_white.clear()
+    led_white_thread = threading.Thread(target=white_LED, args=(blink_time,))
+    led_white_thread.start()
 
 def off_white_light():
-    GPIO.output(LED_WHITE, GPIO.LOW)
-    # stop_white.set()
-    # if led_white_thread is not None:
-    #     led_white_thread.join()
+    # GPIO.output(LED_WHITE, GPIO.LOW)
+    stop_white.set()
+    if led_white_thread is not None:
+        led_white_thread.join()
 
 def on_yellow_light(blink_time):
-    GPIO.output(LED_YELLOW, GPIO.HIGH)
-    # stop_yellow.clear()
-    # led_yellow_thread = threading.Thread(target=yellow_LED, args=(blink_time,))
-    # led_yellow_thread.start()
+    # GPIO.output(LED_YELLOW, GPIO.HIGH)
+    stop_yellow.clear()
+    led_yellow_thread = threading.Thread(target=yellow_LED, args=(blink_time,))
+    led_yellow_thread.start()
     
 
 def off_yellow_light():
-    GPIO.output(LED_YELLOW, GPIO.LOW)
-    # stop_yellow.set()
-    # if led_yellow_thread is not None:
-    #     led_yellow_thread.join()
+    # GPIO.output(LED_YELLOW, GPIO.LOW)
+    stop_yellow.set()
+    if led_yellow_thread is not None:
+        led_yellow_thread.join()
 
 
 
