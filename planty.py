@@ -51,8 +51,8 @@ def water_plant():
 
 
 def sunlight_on():
-    AdaLED.on_white_light(0.001)
-    AdaLED.on_yellow_light(0.001)
+    AdaLED.on_white_light(0.8)
+    AdaLED.on_yellow_light(0.8)
 
 def sunlight_off():
     AdaLED.off_white_light()
@@ -62,9 +62,9 @@ adaWaterTrigger = AdaTrigger('waterpump',water_plant)
 adaSunlightTrigger = AdaToggle('sunlight',sunlight_on,sunlight_off)
 
 
-image_path = "/home/pi/github/Planty/image.jpg"
-image_str = AdaCam.capture(image_path)
-ada_image.send_data(image_path)
+# image_path = "/home/pi/github/Planty/image.jpg"
+# image_str = AdaCam.capture(image_path)
+# ada_image.send_data(image_path)
 # dropbox = Dropboxy()
 # dropbox.upload_file("image.jpg","/Planty/image.jpg")
 
