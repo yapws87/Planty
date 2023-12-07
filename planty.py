@@ -55,8 +55,8 @@ def sunlight_on():
     AdaLED.on_yellow_light()
 
 def sunlight_off():
-    AdaLED.off_white_LED()
-    AdaLED.off_yellow_LED()
+    AdaLED.off_white_light()
+    AdaLED.off_yellow_light()
 
 adaWaterTrigger = AdaTrigger('waterpump',water_plant)
 adaSunlightTrigger = AdaToggle('sunlight',sunlight_on,sunlight_off)
