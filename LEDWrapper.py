@@ -41,7 +41,7 @@ def white_LED(seconds):
         time.sleep(seconds)
  
 # Create and start the thread
-blink_time = 0.1
+blink_time = 0.01
 led_white_thread = threading.Thread(target=white_LED, args=(blink_time,))
 led_yellow_thread = threading.Thread(target=yellow_LED, args=(blink_time,))
 # led_white_thread.start()
