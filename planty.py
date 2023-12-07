@@ -59,7 +59,7 @@ def sunlight_off():
     AdaLED.off_yellow_LED()
 
 adaWaterTrigger = AdaTrigger('waterpump',water_plant)
-adaSunlightTrigger = AdaToggle('sunlight',sunlight_on)
+adaSunlightTrigger = AdaToggle('sunlight',sunlight_on,sunlight_off)
 
 
 image_path = "/home/pi/github/Planty/image.jpg"
