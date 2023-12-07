@@ -42,37 +42,33 @@ def white_LED(seconds):
  
 # Create and start the thread
 blink_time = 0.01
-led_white_thread = threading.Thread(target=white_LED, args=(blink_time,))
-led_yellow_thread = threading.Thread(target=yellow_LED, args=(blink_time,))
+
+
 # led_white_thread.start()
 # led_yellow_thread.start()
 
-
+led_white_thread = None
+led_yellow_thread = None
 def on_white_light():
-        stop_white.clear()
-        #led_white_thread = threading.Thread(target=white_LED, args=(True,))
-        if led_white_thread.is_alive() :
-            led_white_thread.join()
-        else:      
-            led_white_thread.start()
+    stop_white.clear()
+    led_white_thread = threading.Thread(target=white_LED, args=(blink_time,))
+    led_white_thread.start()
 
 def off_white_light():
-        stop_white.set()
-        if led_white_thread.is_alive():
-            led_white_thread.join()
+    stop_white.set()
+    if led_white_thread is not None:
+        led_white_thread.join()
 
 def on_yellow_light():
-        stop_yellow.clear()
-        if led_yellow_thread.is_alive():
-            led_yellow_thread.join()
-        else:
-            led_yellow_thread.start()
-        #led_yellow_thread = threading.Thread(target=yellow_LED, args=(True,))
+    stop_yellow.clear()
+    led_yellow_thread = threading.Thread(target=yellow_LED, args=(blink_time,))
+    led_yellow_thread.start()
+    
 
 def off_yellow_light():
-        stop_yellow.set()
-        if led_yellow_thread.is_alive():
-            led_yellow_thread.join()
+    stop_yellow.set()
+    if led_yellow_thread is not None:
+        led_yellow_thread.join()
 
 
 
