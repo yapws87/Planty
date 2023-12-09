@@ -43,6 +43,12 @@ def white_LED(seconds):
  
 # Create and start the thread
 #blink_time = 0.01
+def FORCE_ON():
+    GPIO.output(LED_WHITE, GPIO.HIGH)
+    GPIO.output(LED_YELLOW, GPIO.HIGH)
+def FORCE_OFF():
+    GPIO.output(LED_WHITE, GPIO.LOW)
+    GPIO.output(LED_YELLOW, GPIO.LOW)
 
 
 # led_white_thread.start()
