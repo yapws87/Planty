@@ -72,7 +72,7 @@ adaSunlightTrigger = AdaToggle('sunlight',sunlight_on,sunlight_off)
 while 1:
     AdaLED.FORCE_ON()
     time.sleep(1)
-    AdaLED.FORCE_OFF())
+    AdaLED.FORCE_OFF()
     humid = AdaSensor.get_humidity()
     temp = AdaSensor.get_temperature()
     soil = AdaSensor.get_soil()
