@@ -51,12 +51,13 @@ def water_plant():
 
 
 def sunlight_on():
-    AdaLED.on_white_light(0.02)
-    AdaLED.on_yellow_light(0.02)
+    AdaLED.FORCE_ON()
+    #AdaLED.on_yellow_light(0.02)
 
 def sunlight_off():
-    AdaLED.off_white_light()
-    AdaLED.off_yellow_light()
+    AdaLED.FORCE_OFF
+    #AdaLED.off_white_light()
+    #AdaLED.off_yellow_light()
 
 adaWaterTrigger = AdaTrigger('waterpump',water_plant)
 adaSunlightTrigger = AdaToggle('sunlight',sunlight_on,sunlight_off)
@@ -70,9 +71,9 @@ adaSunlightTrigger = AdaToggle('sunlight',sunlight_on,sunlight_off)
 
 
 while 1:
-    AdaLED.FORCE_ON()
-    time.sleep(1)
-    AdaLED.FORCE_OFF()
+    # AdaLED.FORCE_ON()
+    # time.sleep(1)
+    # AdaLED.FORCE_OFF()
     humid = AdaSensor.get_humidity()
     temp = AdaSensor.get_temperature()
     soil = AdaSensor.get_soil()

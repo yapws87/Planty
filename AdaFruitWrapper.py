@@ -31,6 +31,7 @@ class AdaFeed:
     
 class AdaTrigger:
     def __init__(self,feed_name,action):
+        print(f"AdaTrigger __init__ : {feed_name}")
         self.feed_name = feed_name
         self.client = mqtt.Client()
         self.client.on_connect = self.on_connect
@@ -65,6 +66,7 @@ class AdaTrigger:
 
 class AdaToggle:
     def __init__(self,feed_name,action_on,action_off):
+        print(f"AdaToggle __init__ : {feed_name}")
         self.feed_name = feed_name
         self.client = mqtt.Client()
         self.client.on_connect = self.on_connect
