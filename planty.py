@@ -61,7 +61,7 @@ def sunlight_off():
 adaWaterTrigger = AdaTrigger('waterpump',water_plant)
 adaSunlightTrigger = AdaToggle('sunlight',sunlight_on,sunlight_off)
 
-AdaLED.FORCE_ON()
+
 # image_path = "/home/pi/github/Planty/image.jpg"
 # image_str = AdaCam.capture(image_path)
 # ada_image.send_data(image_path)
@@ -70,6 +70,9 @@ AdaLED.FORCE_ON()
 
 
 while 1:
+    AdaLED.FORCE_ON()
+    time.sleep(1)
+    AdaLED.FORCE_OFF())
     humid = AdaSensor.get_humidity()
     temp = AdaSensor.get_temperature()
     soil = AdaSensor.get_soil()
