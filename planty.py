@@ -55,7 +55,7 @@ def sunlight_on():
     #AdaLED.on_yellow_light(0.02)
 
 def sunlight_off():
-    AdaLED.FORCE_OFF
+    AdaLED.FORCE_OFF()
     #AdaLED.off_white_light()
     #AdaLED.off_yellow_light()
 
