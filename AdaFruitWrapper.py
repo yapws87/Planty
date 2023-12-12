@@ -25,6 +25,11 @@ class AdaFeed:
     def send_data(self,data):
         self.client.send_data(self.feed.key, data)
 
+    def read_data(self):
+        # Reading the most recent data from the feed
+        data = self.client.receive(self.feed.key)
+        return data.value
+
     def get_feed_names(self,):
         feeds = self.client.feeds()
         return feeds
