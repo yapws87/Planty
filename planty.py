@@ -88,13 +88,11 @@ while 1:
     time_morning = datetime(now.year, now.month, now.day,  7, 0, 0)
     time_evening = datetime(now.year, now.month, now.day, 19, 0, 0)
     if now > time_morning and now < time_evening:
-        print("APA CAKAP")
-        print(ada_light.read_data())
         if int(ada_light.read_data()) == 0:
             ada_light.send_data(1)
             print("LET THERE BE LIGHT")
     else:
-        if ada_light.read_data() == b'1':
+        if int(ada_light.read_data()) == 1:
             ada_light.send_data(0)
 
     # Capture Image

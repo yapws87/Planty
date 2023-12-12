@@ -66,9 +66,6 @@ class AdaTrigger:
         self.action()
         # Handle message (turn LED on or off)
 
-
-
-
 class AdaToggle:
     def __init__(self,feed_name,action_on,action_off):
         print(f"AdaToggle __init__ : {feed_name}")
@@ -87,14 +84,12 @@ class AdaToggle:
         # self.client.on_disconnect = self.disconnected
         # self.client.on_message = self.message
         
-
-
     def connect(self):
         #self.client.connect()
         self.client.loop_start()
 
     def on_connect(self,client, userdata, flags, rc):
-        print("Connected with result code ")
+        print(f"Connected to {self.feed_name} ")
         client.subscribe(f"{ada_id}/feeds/{self.feed_name}")
 
     def on_message(self,client, userdata, msg):
