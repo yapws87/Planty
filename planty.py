@@ -55,9 +55,9 @@ ada_light = AdaFeed('sunlight')
 adaWaterTrigger = AdaTrigger('waterpump',water_plant)
 adaSunlightTrigger = AdaToggle('sunlight',sunlight_on,sunlight_off)
 
-# image_path = "/home/pi/github/Planty/image.jpg"
-# image_str = AdaCam.capture(image_path)
-# ada_image.send_data(image_path)
+image_path = "/home/pi/github/Planty/image.jpg"
+
+
 # dropbox = Dropboxy()
 # dropbox.upload_file("image.jpg","/Planty/image.jpg")
 adaWaterTrigger.connect()
@@ -93,6 +93,11 @@ while 1:
     else:
         if ada_light.read_data() :
             ada_light.send_data(0)
-    
+
+    # Capture Image
+    image_str = AdaCam.capture(image_path)
+    ada_image.send_data(image_path)
+
+
     print(f'{current_time}  Temperature : {temp:.1f}°C   Humidity : {humid:.1f}%  Soil : {soil}')
     time.sleep(60 * 2) # 1 hour
