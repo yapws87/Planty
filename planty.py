@@ -90,6 +90,7 @@ while 1:
     if now > time_morning and now < time_evening:
         if ada_light.read_data() == b'0':
             ada_light.send_data(1)
+            print("LET THERE BE LIGHT")
     else:
         if ada_light.read_data() == b'1':
             ada_light.send_data(0)
