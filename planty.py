@@ -96,7 +96,7 @@ while 1:
 
     # Capture Image
     image_str = AdaCam.capture(image_path)
-    ada_image.send_data(image_path)
+    ada_image.send_data(image_str)
 
 
     print(f'{current_time}  Temperature : {temp:.1f}°C   Humidity : {humid:.1f}%  Soil : {soil}')
