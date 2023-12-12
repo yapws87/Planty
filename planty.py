@@ -88,10 +88,10 @@ while 1:
     time_morning = datetime(now.year, now.month, now.day,  7, 0, 0)
     time_evening = datetime(now.year, now.month, now.day, 19, 0, 0)
     if now > time_morning and now < time_evening:
-        if not ada_light.read_data() :
+        if ada_light.read_data() == b'0':
             ada_light.send_data(1)
     else:
-        if ada_light.read_data() :
+        if ada_light.read_data() == b'1':
             ada_light.send_data(0)
 
     # Capture Image
