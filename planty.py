@@ -95,4 +95,4 @@ while 1:
             ada_light.send_data(0)
     
     print(f'{current_time}  Temperature : {temp:.1f}°C   Humidity : {humid:.1f}%  Soil : {soil}')
-    time.sleep(60 * 1) # 1 hour
+    time.sleep(60 * 2) # 1 hour
