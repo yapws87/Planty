@@ -18,3 +18,12 @@ class Dropboxy:
 
         with open(file_path, 'rb') as f:
             self.dbx.files_upload(f.read(), dropbox_path)
+
+if __name__=="__main__":
+    dbox = Dropboxy()
+    
+
+    #import datetime
+    #now = datetime.datetime.now()
+    #filename = '/' + str(now) + '.png'
+    #dbox.upload_file(image_path,filename)

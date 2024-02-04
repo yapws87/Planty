@@ -58,8 +58,8 @@ adaSunlightTrigger = AdaToggle('sunlight',sunlight_on,sunlight_off)
 image_path = "/home/pi/github/Planty/image.jpg"
 
 
-# dropbox = Dropboxy()
-# dropbox.upload_file("image.jpg","/Planty/image.jpg")
+dropbox = Dropboxy()
+# 
 adaWaterTrigger.connect()
 adaSunlightTrigger.connect()
 
@@ -97,6 +97,10 @@ while 1:
     image_str = AdaCam.capture(image_path)
     ada_image.send_data(image_str)
 
+    # send to dropbox
+    filename = '/' + str(now) + '.png'
+    dropbox.upload_file(image_path,filename)
+
 
     print(f'{current_time}  Temperature : {temp:.1f}°C   Humidity : {humid:.1f}%  Soil : {soil}')
-    time.sleep(60 * 2) # 1 hour
+    time.sleep(60 * 60 * 6) # 1 hour
