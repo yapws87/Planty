@@ -98,7 +98,7 @@ while 1:
     ada_image.send_data(image_str)
 
     # send to dropbox
-    filename = '/' + str(now) + '.png'
+    filename = '/' + str(now) + '.jpg'
     dropbox.upload_file(image_path,filename)
 
 

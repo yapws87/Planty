@@ -34,8 +34,8 @@ class Dropboxy:
 if __name__=="__main__":
     dbox = Dropboxy()
     
-
+    image_path = "/home/pi/github/Planty/image.jpg"
     #import datetime
     #now = datetime.datetime.now()
     #filename = '/' + str(now) + '.png'
-    #dbox.upload_file(image_path,filename)
+    dbox.upload_file(image_path,'/test.jpg')
