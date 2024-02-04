@@ -6,10 +6,22 @@ drop_secret = os.getenv('DROPBOX_SECRET')
 drop_access = os.getenv('DROPBOX_ACCESS')
 #eplace 'your_access_token' with the token you generated
 
-
+def load_access_token(file_path):
+    """Load the Dropbox access token from a file."""
+    try:
+        with open(file_path, 'r') as file:
+            access_token = file.read().strip()  # Remove any possible whitespace
+        return access_token
+    except FileNotFoundError:
+        print("Access token file not found.")
+        return None
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        return None
 
 class Dropboxy:
     def __init__(self,):
+        drop_access = load_access_token('.env')
         self.dbx = dropbox.Dropbox(drop_access)
         #self.dropbox_folder = 'Planty'
     def upload_file(self,file_path,dropbox_path):
