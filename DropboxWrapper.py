@@ -21,6 +21,9 @@ def load_access_token(file_path):
 
 class Dropboxy:
     def __init__(self,):
+        print(f"drop_key : {drop_key}")
+        print(f"drop_secret : {drop_secret}")
+        print(f"drop_access : {drop_access}")
         self.dbx = dropbox.Dropbox(drop_access)
         #self.dropbox_folder = 'Planty'
     def upload_file(self,file_path,dropbox_path):
