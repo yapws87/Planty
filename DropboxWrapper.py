@@ -4,6 +4,8 @@ import os
 drop_key = os.getenv('DROPBOX_KEY')
 drop_secret = os.getenv('DROPBOX_SECRET')
 drop_access = os.getenv('DROPBOX_ACCESS')
+
+#
 #eplace 'your_access_token' with the token you generated
 
 def load_access_token(file_path):
@@ -33,11 +35,52 @@ class Dropboxy:
         with open(file_path, 'rb') as f:
             self.dbx.files_upload(f.read(), dropbox_path)
 
-if __name__=="__main__":
-    dbox = Dropboxy()
+
+def get_token():
+    import requests
+
+    # Your app's credentials
+    APP_KEY = '80y1nyv35sf9tcf'
+    APP_SECRET = 'bt5ouz0s3cqmn2q'
+    REDIRECT_URI = 'http://localhost:5000/callback'
+    #https://www.dropbox.com/oauth2/authorize?response_type=code&client_id=80y1nyv35sf9tcf&redirect_uri=http://localhost:5000/callback
+    # Step 1: Direct users to authorize your app
+    authorization_url = f"https://www.dropbox.com/oauth2/authorize?response_type=code&client_id={APP_KEY}&redirect_uri={REDIRECT_URI}"
+    print(authorization_url)
+    # Step 2: After user authorization, receive the authorization code at your redirect URI
     
-    image_path = "/home/pi/github/Planty/image.jpg"
-    #import datetime
-    #now = datetime.datetime.now()
-    #filename = '/' + str(now) + '.png'
+    authorization_code = input("Enter the authorization code: ")
+    
+
+    # Step 3: Exchange authorization code for access token and refresh token
+    token_endpoint = "https://api.dropbox.com/oauth2/token"
+    data = {
+        'code': authorization_code,
+        'grant_type': 'authorization_code',
+        'client_id': APP_KEY,
+        'client_secret': APP_SECRET,
+        'redirect_uri': REDIRECT_URI
+    }
+
+    response = requests.post(token_endpoint, data=data)
+    tokens = response.json()
+
+    # Initialize Dropbox OAuth2 flow
+    # auth_flow = dropbox.DropboxOAuth2FlowNoRedirect(APP_KEY, APP_SECRET)
+
+    # access_token, refresh_token = auth_flow.finish(authorization_code)
+    # print("Access Token:", access_token)
+    # print("Refresh Token:", refresh_token)
+    print(tokens)
+    print("Access Token:", tokens['access_token'])
+    print("Refresh Token:", tokens['refresh_token'])
+
+if __name__=="__main__":
+    #get_token()
+    
+    dbox = Dropboxy()
+    image_path = r"C:\Users\yapws87\Downloads\original.jpg"
+    import datetime
+    now = datetime.datetime.now()
+    filename = '/' + str(now) + '.jpg'
     dbox.upload_file(image_path,'/test.jpg')
