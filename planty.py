@@ -58,7 +58,7 @@ adaSunlightTrigger = AdaToggle('sunlight',sunlight_on,sunlight_off)
 image_path = "/home/pi/github/Planty/image.jpg"
 
 
-#dropbox = Dropboxy()
+dropbox = Dropboxy()
 # 
 adaWaterTrigger.connect()
 adaSunlightTrigger.connect()
@@ -94,7 +94,7 @@ while 1:
             ada_light.send_data(0)
 
     # Calculate the time to the next hour
-    if now.minute % 15 == 0:
+    if now.minute % 5 == 0:
     
         # Capture Image
         image_str = AdaCam.capture(image_path)
@@ -102,7 +102,7 @@ while 1:
 
         # send to dropbox
         filename = '/' + str(now) + '.jpg'
-        #dropbox.upload_file(image_path,filename)
+        dropbox.upload_file(image_path,filename)
 
 
         print(f'{current_time}  Temperature : {temp:.1f}°C   Humidity : {humid:.1f}%  Soil : {soil}')
