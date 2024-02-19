@@ -94,7 +94,7 @@ while 1:
             ada_light.send_data(0)
 
     # Calculate the time to the next hour
-    if now.minute % 5 == 0:
+    if now.hour % 6 == 0:
     
         # Capture Image
         image_str = AdaCam.capture(image_path)
