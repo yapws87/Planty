@@ -25,7 +25,7 @@ import MotorWrapper as AdaMotor
 import LEDWrapper as AdaLED
 import AdaCameraWrapper as AdaCam
 import time
-from datetime import datetime
+from datetime import datetime, timedelta
 
 print('****** Start Planty *******')
 
@@ -84,7 +84,7 @@ while 1:
 
     # Time based light system
     time_morning = datetime(now.year, now.month, now.day,  7, 0, 0)
-    time_evening = datetime(now.year, now.month, now.day, 21, 0, 0)
+    time_evening = datetime(now.year, now.month, now.day, 22, 0, 0)
     if now > time_morning and now < time_evening:
         if int(ada_light.read_data()) == 0:
             ada_light.send_data(1)
@@ -93,14 +93,17 @@ while 1:
         if int(ada_light.read_data()) == 1:
             ada_light.send_data(0)
 
-    # Capture Image
-    image_str = AdaCam.capture(image_path)
-    ada_image.send_data(image_str)
+    # Calculate the time to the next hour
+    if now.minute % 15 == 0:
+    
+        # Capture Image
+        image_str = AdaCam.capture(image_path)
+        ada_image.send_data(image_str)
 
-    # send to dropbox
-    filename = '/' + str(now) + '.jpg'
-    #dropbox.upload_file(image_path,filename)
+        # send to dropbox
+        filename = '/' + str(now) + '.jpg'
+        #dropbox.upload_file(image_path,filename)
 
 
-    print(f'{current_time}  Temperature : {temp:.1f}°C   Humidity : {humid:.1f}%  Soil : {soil}')
-    time.sleep(60 * 60 * 6) # 1 hour
+        print(f'{current_time}  Temperature : {temp:.1f}°C   Humidity : {humid:.1f}%  Soil : {soil}')
+    time.sleep(60) # 1 minutes
