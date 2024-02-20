@@ -40,10 +40,10 @@ def get_token():
     import requests
 
     # Your app's credentials
-    APP_KEY = '80y1nyv35sf9tcf'
-    APP_SECRET = 'bt5ouz0s3cqmn2q'
+    APP_KEY = ''
+    APP_SECRET = ''
     REDIRECT_URI = 'http://localhost:5000/callback'
-    #https://www.dropbox.com/oauth2/authorize?response_type=code&client_id=80y1nyv35sf9tcf&redirect_uri=http://localhost:5000/callback
+    
     # Step 1: Direct users to authorize your app
     authorization_url = f"https://www.dropbox.com/oauth2/authorize?response_type=code&client_id={APP_KEY}&redirect_uri={REDIRECT_URI}"
     print(authorization_url)
