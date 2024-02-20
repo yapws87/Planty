@@ -62,7 +62,7 @@ dropbox = Dropboxy()
 # 
 adaWaterTrigger.connect()
 adaSunlightTrigger.connect()
-
+captured_hour = 0
 while 1:
 
     # Get sensor values
@@ -85,24 +85,27 @@ while 1:
     # Time based light system
     time_morning = datetime(now.year, now.month, now.day,  7, 0, 0)
     time_evening = datetime(now.year, now.month, now.day, 22, 0, 0)
+
     if now > time_morning and now < time_evening:
         if int(ada_light.read_data()) == 0:
             ada_light.send_data(1)
             print("LET THERE BE LIGHT")
+
+        if now.hour % 7 == 0 and now.hour != captured_hour:   
+            # Capture Image
+            image_str = AdaCam.capture(image_path)
+            ada_image.send_data(image_str)
+
+            # send to dropbox
+            filename = '/' + str(now) + '.jpg'
+            dropbox.upload_file(image_path,filename)
+            captured_hour = now.hour
     else:
         if int(ada_light.read_data()) == 1:
             ada_light.send_data(0)
 
     # Calculate the time to the next hour
-    if now.hour % 6 == 0:
-    
-        # Capture Image
-        image_str = AdaCam.capture(image_path)
-        ada_image.send_data(image_str)
-
-        # send to dropbox
-        filename = '/' + str(now) + '.jpg'
-        dropbox.upload_file(image_path,filename)
+   
 
 
         print(f'{current_time}  Temperature : {temp:.1f}°C   Humidity : {humid:.1f}%  Soil : {soil}')
