@@ -64,7 +64,8 @@ adaWaterTrigger.connect()
 adaSunlightTrigger.connect()
 captured_hour = 0
 
-filename = '/test4.jpg'
+now = datetime.now()
+filename = '/' + str(now) + '_test.jpg'
 image_str = AdaCam.capture(image_path)
 dropbox.upload_file(image_path,filename)
 
