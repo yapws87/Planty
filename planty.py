@@ -69,6 +69,14 @@ filename = '/' + str(now) + '_test.jpg'
 image_str = AdaCam.capture(image_path)
 dropbox.upload_file(image_path,filename)
 
+# initial Light setting
+time_morning = datetime(now.year, now.month, now.day,  7, 0, 0)
+time_evening = datetime(now.year, now.month, now.day, 22, 0, 0)
+if now > time_morning and now < time_evening:
+    ada_light.send_data(1)
+else:
+    ada_light.send_data(0)
+
 
 while 1:
 
@@ -90,8 +98,7 @@ while 1:
     current_time = now.strftime("%H:%M:%S")
 
     # Time based light system
-    time_morning = datetime(now.year, now.month, now.day,  7, 0, 0)
-    time_evening = datetime(now.year, now.month, now.day, 22, 0, 0)
+
     print(f"time : {current_time}")
     if now > time_morning and now < time_evening:
         if int(ada_light.read_data()) == 0:
