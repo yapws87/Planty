@@ -31,11 +31,11 @@ class Dropboxy:
         #self.dbx = dropbox.Dropbox(drop_access)
         #self.dropbox_folder = 'Planty'
 
-    def __init__(self,drop_key,drop_secret,drop_access):
-        print(f"drop_key : {drop_key}")
-        print(f"drop_secret : {drop_secret}")
-        print(f"drop_access : {drop_access}")
-        #self.dbx = dropbox.Dropbox(drop_access)
+    # def __init__(self,drop_key,drop_secret,drop_access):
+    #     print(f"drop_key : {drop_key}")
+    #     print(f"drop_secret : {drop_secret}")
+    #     print(f"drop_access : {drop_access}")
+    #     #self.dbx = dropbox.Dropbox(drop_access)
         #self.dropbox_folder = 'Planty'
     def upload_file(self,file_path,dropbox_path):
         #file_path = '/pi/github/Planty/image.jpg'  # Path to your image file on Raspberry Pi
