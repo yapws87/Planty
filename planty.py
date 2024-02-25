@@ -63,6 +63,12 @@ dropbox = Dropboxy()
 adaWaterTrigger.connect()
 adaSunlightTrigger.connect()
 captured_hour = 0
+
+filename = '/test.jpg'
+image_str = AdaCam.capture(image_path)
+dropbox.upload_file(image_path,filename)
+
+
 while 1:
 
     # Get sensor values
