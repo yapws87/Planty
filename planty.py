@@ -98,7 +98,8 @@ while 1:
     current_time = now.strftime("%H:%M:%S")
 
     # Time based light system
-
+    time_morning = datetime(now.year, now.month, now.day,  7, 0, 0)
+    time_evening = datetime(now.year, now.month, now.day, 22, 0, 0)
     
     if now > time_morning and now < time_evening:
         if int(ada_light.read_data()) == 0:
@@ -116,6 +117,7 @@ while 1:
             captured_hour = now.hour
     else:
         if int(ada_light.read_data()) == 1:
+            print("Darkness surrounds you")
             ada_light.send_data(0)
 
     # Calculate the time to the next hour
