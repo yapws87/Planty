@@ -3,7 +3,7 @@ import base64
 from io import BytesIO
 import time
 import subprocess
-from PIL import image
+from PIL import Image
 
 
 # Set up camera
@@ -15,7 +15,7 @@ cam_height = 1080
 
 def convert2str(input_path, width, height):
     # Read the image
-    img = image.imread(input_path)
+    img = Image.imread(input_path)
     
     # Resize the image
     resized_image = img.resize(height, width)
