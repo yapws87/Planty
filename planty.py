@@ -100,7 +100,7 @@ while 1:
     # Time based light system
     time_morning = datetime(now.year, now.month, now.day,  7, 0, 0)
     time_evening = datetime(now.year, now.month, now.day, 22, 0, 0)
-    print(now)
+
     if now > time_morning and now < time_evening:
         if int(ada_light.read_data()) == 0:
             ada_light.send_data(1)
