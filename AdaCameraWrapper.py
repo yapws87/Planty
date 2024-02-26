@@ -36,7 +36,7 @@ def capture(file_name):
     image_out = "temp.jpg"
     
     with open(image_path, "rb") as image_file:
-        image_byte = resize_image(image_path,image_out,320,240)
+        image_byte = resize_image(image_path,320,240)
         encoded_str = base64.b64encode(image_byte).decode('utf-8')
         #encoded_str = base64.b64encode(image_file.read()).decode('utf-8')
 
