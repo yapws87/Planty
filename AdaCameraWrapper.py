@@ -15,7 +15,7 @@ cam_height = 1080
 
 def convert2str(input_path, width, height):
     # Read the image
-    img = Image.imread(input_path)
+    img = Image.open(input_path)
     
     # Resize the image
     resized_image = img.resize(height, width)
