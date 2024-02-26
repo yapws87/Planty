@@ -18,7 +18,7 @@ def convert2str(input_path, width, height):
     img = Image.open(input_path)
     
     # Resize the image
-    resized_image = img.resize(height, width)
+    resized_image = img.resize((height, width))
 
     # Convert resized image to bytes
     with BytesIO() as buffer:
