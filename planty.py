@@ -106,7 +106,7 @@ while 1:
             ada_light.send_data(1)
             print("LET THERE BE LIGHT")
 
-        if now.hour % 7 == 0 and now.hour != captured_hour:   
+        if now.hour % 2 == 0 and now.hour != captured_hour:   
             # Capture Image
             image_str = AdaCam.capture(image_path)
             ada_image.send_data(image_str)
